@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Air Quality Prediction System</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1>🌍 Air Quality Prediction System</h1>
+
+<p>Enter pollution values to predict AQI</p>
+
+
+
+<!-- Error Message -->
+
+{% if error %}
+
+<div class="error">
+    {{ error }}
+</div>
+
+{% endif %}
+
+
+
+
+<!-- Prediction Form -->
+
+<form action="/predict" method="POST">
+
+
+<label>PM2.5</label>
+<input type="number" name="pm25" min="0" max="1000" step="any" required>
+
+
+<label>PM10</label>
+<input type="number" name="pm10" min="0" max="1000" step="any" required>
+
+
+<label>NO</label>
+<input type="number" name="no" min="0" max="1000" step="any" required>
+
+
+<label>NO₂</label>
+<input type="number" name="no2" min="0" max="1000" step="any" required>
+
+
+<label>NOx</label>
+<input type="number" name="nox" min="0" max="1000" step="any" required>
+
+
+<label>CO</label>
+<input type="number" name="co" min="0" max="1000" step="any" required>
+
+
+<label>SO₂</label>
+<input type="number" name="so2" min="0" max="1000" step="any" required>
+
+
+<label>O₃</label>
+<input type="number" name="o3" min="0" max="1000" step="any" required>
+
+
+
+<button type="submit">
+    🔮 Predict AQI
+</button>
+
+
+</form>
+
+
+
+
+
+<!-- Dashboard Button -->
+
+
+<a href="/dashboard">
+
+<button type="button">
+    📊 Open Dashboard
+</button>
+
+</a>
+
+
+
+
+
+<!-- Prediction Result -->
+
+
+{% if prediction %}
+
+
+<div class="result {{ color }}">
+
+
+<h2>Predicted AQI</h2>
+
+
+<h1>
+{{ prediction }}
+</h1>
+
+
+
+<h3>
+Air Quality:
+</h3>
+
+
+<h2>
+{{ category }}
+</h2>
+
+
+
+<h3>
+Health Advice:
+</h3>
+
+
+<p>
+{{ advice }}
+</p>
+
+
+</div>
+
+
+
+
+
+<!-- Weather Section -->
+
+
+{% if weather %}
+
+
+<div class="result">
+
+
+<h2>
+🌦 Current Weather
+</h2>
+
+
+<p>
+<strong>📍 City:</strong>
+{{ weather.city }}
+</p>
+
+
+<p>
+<strong>🌡 Temperature:</strong>
+{{ weather.temperature }} °C
+</p>
+
+
+<p>
+<strong>💧 Humidity:</strong>
+{{ weather.humidity }} %
+</p>
+
+
+<p>
+<strong>💨 Wind Speed:</strong>
+{{ weather.wind }} m/s
+</p>
+
+
+<p>
+<strong>☁ Condition:</strong>
+{{ weather.description }}
+</p>
+
+
+</div>
+
+
+{% endif %}
+
+
+
+
+
+<!-- Download Options -->
+
+
+<div class="result">
+
+
+<h2>
+📁 Export Data
+</h2>
+
+
+<a href="/download">
+
+<button type="button">
+⬇ Download History CSV
+</button>
+
+</a>
+
+
+
+<a href="/report">
+
+<button type="button">
+📄 Download AQI Report PDF
+</button>
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- AQI Graph -->
+
+
+{% if prediction %}
+
+
+<div class="graph">
+
+
+<h2>
+📈 AQI Prediction History
+</h2>
+
+
+
+<img src="{{ url_for('static', filename='aqi_graph.png') }}"
+class="aqi-image"
+alt="AQI Graph">
+
+
+</div>
+
+
+{% endif %}
+
+
+
+{% endif %}
+
+
+
+</div>
+
+
+</body>
+
+
+</html>

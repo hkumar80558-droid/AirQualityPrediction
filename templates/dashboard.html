@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AQI Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <h1>📊 AQI Dashboard</h1>
+
+
+    <!-- Statistics Cards -->
+
+    <div class="dashboard-card">
+
+
+        <h2>Total Predictions</h2>
+
+        <h1>{{ total }}</h1>
+
+
+    </div>
+
+
+
+    <div class="dashboard-card">
+
+
+        <h2>Average AQI</h2>
+
+        <h1>{{ average }}</h1>
+
+
+    </div>
+
+
+
+    <div class="dashboard-card">
+
+
+        <h2>Highest AQI</h2>
+
+        <h1>{{ highest }}</h1>
+
+
+    </div>
+
+
+
+    <br>
+
+
+    <!-- AQI Graph -->
+
+    <div class="graph">
+
+
+        <h2>📈 AQI Prediction History</h2>
+
+
+        <img src="{{ url_for('static', filename='aqi_graph.png') }}"
+             class="aqi-image"
+             alt="AQI Graph">
+
+
+    </div>
+
+
+
+    <!-- Feature Importance -->
+
+    <div class="graph">
+
+
+        <h2>🤖 AI Model Feature Importance</h2>
+
+
+        <img src="{{ url_for('static', filename='feature_importance.png') }}"
+             class="aqi-image"
+             alt="Feature Importance">
+
+
+    </div>
+
+
+
+
+    <!-- Buttons -->
+
+
+    <a href="/download">
+
+        <button>
+            ⬇ Download CSV History
+        </button>
+
+    </a>
+
+
+
+    <a href="/report">
+
+        <button>
+            📄 Download AQI Report
+        </button>
+
+    </a>
+
+
+
+    <a href="/clear">
+
+        <button>
+            🗑 Clear History
+        </button>
+
+    </a>
+
+
+
+    <br><br>
+
+
+    <a href="/">
+
+        <button>
+            🏠 Back to Home
+        </button>
+
+    </a>
+
+
+</div>
+
+
+</body>
+
+</html>
