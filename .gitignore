@@ -1,0 +1,5 @@
+.venv/
+venv/
+__pycache__/
+air_quality.csv
+prediction_history.csv
