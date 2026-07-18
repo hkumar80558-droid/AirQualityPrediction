@@ -35,8 +35,9 @@ def predict():
     except (ValueError, KeyError):
 
         return render_template(
-            "index.html",
-            error="❌ Please enter valid numeric values."
+         "index.html",
+          error="Error: Please enter valid numeric values."
+
         )
 
     values = [
@@ -54,14 +55,14 @@ def predict():
 
         return render_template(
             "index.html",
-            error="❌ Pollution values cannot be negative."
+            error= "Error: Pollution values cannot be negative."
         )
 
     if any(value > 1000 for value in values):
 
         return render_template(
             "index.html",
-            error="❌ Enter realistic pollution values."
+            error= "Error: Please enter valid numeric values."
         )
 
     # AI Prediction
