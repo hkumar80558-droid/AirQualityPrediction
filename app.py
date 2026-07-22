@@ -32,11 +32,11 @@ def predict():
         so2 = float(request.form["so2"])
         o3 = float(request.form["o3"])
     except Exception as e:
-     print("ERROR:", e)
-    return render_template(
-        "index.html",
-        error=str(e)
-    )
+        print("ERROR:", e)
+        return render_template(
+            "index.html",
+            error=str(e)
+        )
     
 
     values = [
